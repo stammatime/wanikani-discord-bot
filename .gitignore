@@ -54,7 +54,9 @@ bower_components
 # node-waf configuration
 .lock-wscript
 
+#app specific
 user-data.ts
+old
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { users } from './user-data';
+import { users, WanikaniUser } from './user-data';
  
 const wanikaniURL = 'https://api.wanikani.com';
 
@@ -9,22 +9,24 @@ console.log(date);
 const updated_after = date.toDateString();
 // const updated_after = "updated_after=2022-06-01T10:42:00Z";
 
-async function getLevels(): Promise<number[]> {
+
+async function getLevels(): Promise<Array<WanikaniUser>> {
     
-    let levels = [];
+    let allUsers = [];
     for (const user of users){
-        const config = {
-            headers: {
-                Authorization: `Bearer ${user.readOnlyApiToken}`
-            }
-        };
-        const response = await axios.get(`${wanikaniURL}/v2/level_progressions?${updated_after}`, config);
+        const config = { headers: { Authorization: `Bearer ${user.readOnlyApiToken}`} };
+        const userWkAPI = await axios.get(`${wanikaniURL}/v2/user?${updated_after}`, config);
+        // const levelProgressionsWkAPI = await axios.get(`${wanikaniURL}/v2/level_progressions?${updated_after}`, config);
         // console.log(response.data.total_count);
-        levels.push(response.data.total_count);
-        // console.log(levels)
+        console.log(userWkAPI.status);
+        console.log(userWkAPI.data);
+        user.stats = { level: userWkAPI.data.data.level };
+        console.log(user);
+        allUsers.push(userWkAPI.data);
+        console.log(user)
     }
     // console.log('tets')
-    return levels;
+    return allUsers;
 }
 
 function subtractHours(numOfHours: number, date = new Date()) {
@@ -36,7 +38,5 @@ async function index () {
     let x = await getLevels();
     console.log(x);
 }
-
-index();
 
 export { getLevels };

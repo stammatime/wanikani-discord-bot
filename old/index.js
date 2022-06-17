@@ -9,6 +9,8 @@ exports.handler = async (event) => {
   const timestamp = event.headers['x-signature-timestamp'];
   const strBody = event.body; // should be string, for successful sign
 
+  // https://discord.com/developers/docs/interactions/receiving-and-responding#security-and-authorization
+  // nacl.sign.detached.verify(message, signature, publicKey)
   const isVerified = nacl.sign.detached.verify(
     Buffer.from(timestamp + strBody),
     Buffer.from(signature, 'hex'),
@@ -22,6 +24,8 @@ exports.handler = async (event) => {
     };
   }
 
+  // PING response 
+  // https://discord.com/developers/docs/interactions/receiving-and-responding#receiving-an-interaction
   const body = JSON.parse(strBody)
   if (body.type == 1) {
     return {

@@ -7,10 +7,13 @@
   "author": "SAM CLI",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^16.0.1",
+    "tweetnacl": "^1.0.3",
     "axios": "^0.27.2"
   },
   "scripts": {
     "unit": "jest",
+    "build": "cd ..; sam build --beta-features",
     "lint": "eslint '*.ts' --quiet --fix",
     "compile": "tsc",
     "test": "npm run compile && npm run unit"

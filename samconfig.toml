@@ -3,7 +3,7 @@ version = 0.1
 [default.deploy]
 [default.deploy.parameters]
 stack_name = "wanikani-discord-bot-stack"
-s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-14g7vgehppmd5"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-11x3g26wlzy4m"
 s3_prefix = "wanikani-discord-bot-stack"
 region = "us-east-1"
 confirm_changeset = true
