@@ -3,6 +3,7 @@ import { getLevels } from './get-levels';
 import nacl from 'tweetnacl';
 import { resolve } from 'path';
 import { AnyRecord } from 'dns';
+import { WanikaniUser } from './user-data';
 //axios global setting
 
 
@@ -92,18 +93,18 @@ export const lambdaHandler = async (event: DiscordAPIGatewayProxyEvent): Promise
 
   if (body?.data?.name == 'foo') {
     console.log(strBody);
-    let levels = await getLevels();
+    let users: WanikaniUser[] = await getLevels();
+    let returnContent = "";
+    console.log("in foo")
+    console.log(users);
+
+    for (const user of users){
+      returnContent = returnContent + `${user.discordName} is level ${user.stats?.level}\n`;
+    }
+
     console.log('levels api req complete');
 
-    // return JSON.stringify({  // Note the absence of statusCode
-    //   "type": 4,  // This type stands for answer with invocation shown
-    //   "data": { "content": "bar" }
-    // })
-    // response = Buffer.from(JSON.stringify({  // Note the absence of statusCode
-    //   "type": 4,  // This type stands for answer with invocation shown
-    //   "data": { "content": "bar" }
-    // }));
-    response = {statusCode: 200, body: JSON.stringify({ type: 4, data: {content: "bar"} })};
+    response = {statusCode: 200, body: JSON.stringify({ type: 4, data: {content: returnContent} })};
     console.log(response);
     return response;
   }

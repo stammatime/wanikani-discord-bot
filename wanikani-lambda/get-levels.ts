@@ -12,7 +12,7 @@ const updated_after = date.toDateString();
 
 async function getLevels(): Promise<Array<WanikaniUser>> {
     
-    let allUsers = [];
+    let allUsers: WanikaniUser[] = [];
     for (const user of users){
         const config = { headers: { Authorization: `Bearer ${user.readOnlyApiToken}`} };
         const userWkAPI = await axios.get(`${wanikaniURL}/v2/user?${updated_after}`, config);
@@ -20,12 +20,13 @@ async function getLevels(): Promise<Array<WanikaniUser>> {
         // console.log(response.data.total_count);
         console.log(userWkAPI.status);
         console.log(userWkAPI.data);
-        user.stats = { level: userWkAPI.data.data.level };
+        user.stats.level = userWkAPI.data.data.level;
         console.log(user);
-        allUsers.push(userWkAPI.data);
-        console.log(user)
+        allUsers.push(user);
+        console.log(user);
     }
-    // console.log('tets')
+    console.log('in levels');
+    console.log(allUsers);
     return allUsers;
 }
 
