@@ -1,3 +1,12 @@
+# WaniKani Level Bot
+A simple Discord bot that retrieves a user's WaniKani level when requested.
+
+# Features
+Get your current WaniKani level by using a command.
+Uses the WaniKani API to fetch real-time data.
+# Commands
+`/wanikani level <api_key>` – Fetches and displays your WaniKani level.
+
 # Wanikani Discord Bot API
 
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.
