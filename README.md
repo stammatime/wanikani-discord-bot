@@ -1,11 +1,50 @@
-# WaniKani Level Bot
-A simple Discord bot that retrieves a user's WaniKani level when requested.
+# 🐉 WaniKani Level Bot  
 
-# Features
-Get your current WaniKani level by using a command.
-Uses the WaniKani API to fetch real-time data.
-# Commands
-`/wanikani level <api_key>` – Fetches and displays your WaniKani level.
+A simple Discord bot that retrieves a user's **WaniKani level** upon request. This bot interacts with the **WaniKani API** to fetch real-time user data.  
+
+## 📌 Features  
+- Get your **current WaniKani level** using a command.  
+- Simple and lightweight bot for Japanese learners using WaniKani.  
+
+## 🛠 Commands  
+
+### Fetches and displays your WaniKani level. 
+```
+/wanikani level <api_key>
+``` 
+
+## 🚀 Installation  
+
+### Prerequisites  
+- Node.js (latest LTS recommended)  
+- A **Discord bot token**  
+- A **WaniKani API key** (get one from [WaniKani](https://www.wanikani.com/settings/personal_access_tokens))  
+
+### Steps  
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/yourusername/wanikani-level-bot.git
+   cd wanikani-level-bot
+   ```
+2. Install Dependencies
+   ```bash
+   npm install
+   ```
+3. Configure environment variables
+    - Create a .env file and add:
+         ```bash
+         DISCORD_TOKEN=your_discord_bot_token
+         ```
+4. Start the bot
+   ```bash
+   DISCORD_TOKEN=your_discord_bot_token
+   ```
+
+# 🎮 Usage
+
+1. Invite the bot to your server.
+2. Use /wanikani level <api_key> to check your WaniKani level.
+
 
 # Wanikani Discord Bot API
 
